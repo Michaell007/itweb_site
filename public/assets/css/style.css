@@ -1174,8 +1174,8 @@ input[type="checkbox"] {
 }
 
 .section-space--ptb_120 {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1327,8 +1327,8 @@ input[type="checkbox"] {
 }
 
 .section-space--ptb_80 {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6668,8 +6668,16 @@ input[type="checkbox"] {
           transform: translateY(-5px);
 }
 
-.ht-box-images.style-05:hover .image-box-wrap {
-  background: #002FA6;
+.ht-box-images.style-05a:hover .image-box-wrap {
+  background: #F7941D;
+}
+
+.ht-box-images.style-05b:hover .image-box-wrap {
+  background: #01AEEF;
+}
+
+.ht-box-images.style-05c:hover .image-box-wrap {
+  background: #ED1C24;
 }
 
 .ht-box-images.style-05:hover .box-image .default-image {
@@ -6691,7 +6699,7 @@ input[type="checkbox"] {
 }
 
 .ht-box-images.style-05:hover .content .box-images-arrow a {
-  color: #d2a98e;
+  color: #ffffff;
 }
 
 .ht-box-images.style-06 {
@@ -11619,7 +11627,7 @@ ol {
 }
 
 .processing-contact-us-bg {
-  background-color: #002fa6;
+  background-color: #bd7d55;
   background-image: url(../images/bg/mitech-processing-contact-bg.png);
   background-repeat: no-repeat;
   background-position: top right;
