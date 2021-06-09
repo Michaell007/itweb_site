@@ -6453,7 +6453,7 @@ input[type="checkbox"] {
   border-radius: 50%;
   font-size: 24px;
   color: #fff;
-  background: #d2a98e;
+  background: #f38c12;
 }
 
 .ht-box-images.style-01:hover .circle-arrow a {
@@ -9165,7 +9165,7 @@ ol {
           box-shadow: 0 2px 30px rgba(89, 69, 230, 0.12);
   border: 0 solid transparent;
   padding: 35px 21px 41px;
-  background: #002FA6;
+  background: #478aef;
 }
 
 .pricing-table-two .pricing-table--popular .pricing-table__title {

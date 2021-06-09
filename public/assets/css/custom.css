@@ -1,0 +1,28 @@
+/*--
+    Default Itwebson
+*/
+.text-color-itwebson-blue {
+  color: #086AD8;
+}
+
+.text-color-itwebson-orange {
+  color: #f38c12;
+}
+
+.text-color-itwebson-red {
+  color: #ed1c24;
+}
+
+.bg-color-itwebson-red {
+  background: #ed1c24;
+}
+
+.bg-color-itwebson-orange {
+  background: #f38c12;
+}
+
+.bg-color-itwebson-blue {
+  background: #086AD8;
+}
+
+
