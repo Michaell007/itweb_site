@@ -23,13 +23,16 @@
                                         </div>
                                         <div class="contact-inner">
                                             {{ form_widget(form.email, {'attr': {'placeholder':'Email *'}}) }}
+                                            <span for="" class="help-block">{{ form_errors(form.email) }}</span>
                                         </div>
                                     </div>
                                     <div class="contact-inner">
                                         {{ form_widget(form.objet, {'attr': {'placeholder':'Sujet *'}}) }}
+                                        <span for="" class="help-block">{{ form_errors(form.objet) }}</span>
                                     </div>
                                     <div class="contact-inner contact-message">
                                         {{ form_widget(form.message, {'attr': {'placeholder':'Saisissez votre message *'}}) }}
+                                        <span for="" class="help-block">{{ form_errors(form.message) }}</span>
                                     </div>
                                     <div class="submit-btn mt-20">
                                         {{ form_widget(form.send, {'label':'Envoyer le message', 'attr': {'class':'ht-btn ht-btn-md'}}) }}
