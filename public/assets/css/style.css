@@ -9402,7 +9402,7 @@ ol {
 }
 
 .row-separators-images {
-  background-image: url(../images/bg/home-resolutions-hero-bg-image.jpg);
+  /* background-image: url("../images/bg/home_bg3.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -13992,7 +13992,7 @@ blockquote {
 .resolutions-hero-bg {
   background-color: transparent;
   background-repeat: no-repeat;
-  background-image: url("../images/hero/home-resolutions-hero-bg-image.jpg");
+  background-image: url("../images/bg/home_bg.jpg");
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -14094,7 +14094,15 @@ blockquote {
 .resolutions-hero-bg-2 {
   background-color: transparent;
   background-repeat: no-repeat;
-  background-image: url("../images/hero/home-resolutions-hero-bg-image.jpg");
+  background-image: url("../images/bg/home_bg2.jpg");
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.resolutions-hero-bg-3 {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url("../images/bg/home_bg3.jpg");
   background-size: cover;
   background-position: 50% 50%;
 }
