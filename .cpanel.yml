@@ -1,6 +1,5 @@
---- 
-deployment: 
-  tasks: 
-    - "export DEPLOYPATH=/home4/africda3/public_html/itwebsite"
-    - "/bin/cp -R  /templates/ $DEPLOYPATH"
-    - "/bin/cp -R /src $DEPLOYPATH"
+---
+deployment:
+      tasks:
+        - export DEPLOYPATH=/home4/africda3/public_html/itwebsite  # Add /<app_folder> if required
+        - /bin cp -r * $DEPLOYPATH                           #copy all from root
