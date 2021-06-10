@@ -57,7 +57,26 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
-            dd( $data );
+            // dd( $data );
+
+            // Envoie de mail install switmailer  \Swift_Message $mailer en argment de la fction index
+            /*$message = (new \Swift_Message('Email envoye depuis le site web ITwebson'))
+                ->setFrom('send@mail.com')
+                ->setFrom('recpient@mail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emails/registration.html.twig',
+                        ['name' => $data->getName()]
+                    ),
+                    'text/html'
+                )
+            ;
+            $mailer->send($message);*/
+
+            $this->addFlash('success','Merci de nous contacter, votre message a bien ete envoye.');
+            return $this->redirectToRoute('contact', [
+                'form' => $form->createView(),
+            ]);
         }
 
         return $this->render('front-end/contact/contact.html.twig', [

@@ -15,6 +15,12 @@
                     <div class="col-lg-6 col-lg-6">
                         <div class="contact-form-wrap">
                             {{ form_start(form) }}
+
+                                {% for message in app.flashes('success') %}
+                                    <div class="successHandler alert alert-success">
+                                        <i class="fa fa-ok"></i> {{ message }}
+                                    </div>
+                                {% endfor %}
                                 <div class="contact-form">
                                     <div class="contact-input">
                                         <div class="contact-inner">
