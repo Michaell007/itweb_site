@@ -2,36 +2,40 @@
 
 {% block body %}
     <div class="site-wrapper-reveal">
-        <div class="typed-text-wrapper bg-gray section-space--ptb_120">
+        {# <div class="typed-text-wrapper bg-gray section-space--ptb_120">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 ml-auto mr-auto">
                         <div class="typed-text-wrap">
                             <h4 class="cd-headline letters type">
-                                <span>Nous</span> <br/>
-                                <span class="cd-words-wrapper waiting"><b class="is-visible">Recrutons</b></span> 
+                                <span>Nous <span class="cd-words-wrapper waiting"><b class="is-visible">recrutons</b></span>  </span> <br/>
                             </h4>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> #}
 
         <div class="accordion-wrapper section-space--ptb_100">
             <div class="container">
-
-                <div class="row">
+                {# <div class="row">
                     <div class="col-lg-12">
                         <!-- section-title-wrap Start -->
                         <div class="section-title-wrap text-center section-space--mb_20">
                             <h3 class="heading">Envoyer votre candidature spontanée</h3>
                         </div>
                     </div>
-                </div>
+                </div> #}
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="faq-wrapper  section-space--mt_40">
+                    <div class="col-lg-8">
+                        <div class="typed-text-wrap section-space--ptb_65">
+                            <h4 class="cd-headline letters type">
+                                <span>Nous <span class="cd-words-wrapper waiting"><b class="is-visible">recrutons</b></span>  </span> <br/>
+                            </h4><hr/>
+                        </div>
+
+                        <div class="faq-wrapper  section-space--mt_10">
                             <div id="accordion">
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
@@ -43,41 +47,66 @@
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Mitech takes into consideration every little detail to make sure the system run smoothly and responsively. Mitech employs a new technique called Minified Technology for securing customers' database & building up highly confidential firewalls. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingThree">
-                                        <h5 class="mb-0">
-                                            <button class="btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Designer <span> <i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i> </span>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>We reduce redundant complex calculations and lengthy erroneous code texts with simpler ones to ensure Mitech would run seamlessly and the design is reserved in its best form when viewed from a wide range of mobile devices & browsers. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingFour">
-                                        <h5 class="mb-0">
-                                            <button class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                Developpeur FullStack<span> <i class="fas fa-chevron-down"></i><i class="fas fa-chevron-up"></i> </span>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>Our service offerings to enhance customer experience throughout the product lifecycle includes – test and repair, service management, and end-to-end warranty management. </p>
+                                            <p>
+                                                Mitech takes into consideration every little detail to make sure the system run smoothly and responsively. 
+                                                Mitech employs a new technique called Minified Technology for securing customers' database & building up 
+                                                highly confidential firewalls. 
+                                            </p>
+                                            <a href=""><h6 class="heading font-weight--reguler"><u>Telecharger la fiche d'emploi </u></h6></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                    </div>
+                    {# col #}
+                    <div class="col-md-4 ">
+                        <h5 class="heading">Je postule</h5><hr/>
+
+                        {{ form_start(form) }}
+                            {% for message in app.flashes('success') %}
+                                <div class="successHandler alert alert-success">
+                                    <i class="fa fa-ok"></i> {{ message }}
+                                </div>
+                            {% endfor %}
+                            <div class="contact-form">
+                                <div class="contact-inner">
+                                    {{ form_widget(form.fullname, {'attr': {'placeholder':'Nom et prenom *'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.fullname) }}</span>
+                                </div>
+                                <div class="contact-inner">
+                                    {{ form_widget(form.email, {'attr': {'placeholder':'Email *'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.email) }}</span>
+                                </div>
+                                <div class="contact-inner">
+                                    {{ form_widget(form.annee_experience, {'attr': {'placeholder':'Annee(s) d\'experience *'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.annee_experience) }}</span>
+                                </div>
+                                <div class="contact-inner">
+                                    {{ form_widget(form.niveau_etude, {'attr': {'placeholder':'Niveau d\'etude *'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.niveau_etude) }}</span>
+                                </div>
+                                <div class="contact-inner">
+                                    {{ form_widget(form.poste, {'attr': {'placeholder':'Poste*'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.poste) }}</span>
+                                </div>
+                                <div class="contact-inner">
+                                    <label class="control-label">
+                                        Telecharger votre CV
+                                    </label>
+                                    {{ form_widget(form.fichier, {'attr': {'placeholder':'Votre cahier de charge'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.fichier) }}</span>
+                                </div>
+                                <div class="contact-inner contact-message">
+                                    {{ form_widget(form.message, {'attr': {'placeholder':'Saisissez votre message *'}}) }}
+                                    <span for="" class="help-block">{{ form_errors(form.message) }}</span>
+                                </div>
+                                <div class="submit-btn mt-20">
+                                    {{ form_widget(form.envoyer, {'label':'Envoyer', 'attr': {'class':'ht-btn ht-btn-md'}}) }}
+                                    <p class="form-messege"></p>
+                                </div>
+                            </div>
+                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
