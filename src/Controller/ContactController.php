@@ -18,9 +18,8 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, \Swift_Mailer $mailer): Response
     {
-
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
                 'required' => true,
@@ -58,21 +57,20 @@ class ContactController extends AbstractController
             // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
 
-            // Envoie de mail install switmailer  \Swift_Message $mailer en argment de la fction index
-            // $message = (new \Swift_Message('Email envoye depuis le site web ITwebson'))
-            //     ->setFrom('send@mail.com')
-            //     ->setFrom('recpient@mail.com')
-            //     ->setBody(
-            //         $this->renderView(
-            //             'emails/contact.html.twig',
-            //             ['data' => $data]
-            //         ),
-            //         'text/html'
-            //     )
-            // ;
-            // $mailer->send($message);
+            $message = (new \Swift_Message('Message envoyé depuis la page contact ITwebson'))
+                ->setFrom('itwebsonsender@gmail.com')
+                ->setTo('contact@itwebson.net')
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact.html.twig',
+                        ['data' => $data]
+                    ),
+                    'text/html'
+                )
+            ;
+            $mailer->send($message);
 
-            $this->addFlash('success','Merci de nous contacter, votre message a bien ete envoye.');
+            $this->addFlash('success','Merci de nous contacter, votre message a bien été envoye.');
             return $this->redirectToRoute('contact', [
                 'form' => $form->createView(),
             ]);
