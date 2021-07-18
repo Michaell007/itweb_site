@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Asset\UrlPackage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,14 +15,18 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
 
 class RecrutementController extends AbstractController
 {
     /**
      * @Route("/recrutement", name="recrutement")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, \Swift_Mailer $mailer): Response
     {
+
+        $urlPackage = new UrlPackage('http://localhost:8000/assets/uploads/cv/images/', new StaticVersionStrategy('v1'));
+        // dd( $urlPackage->getUrl('/logo.png') );
 
         $form = $this->createFormBuilder()
             ->add('fullname', TextType::class, [
@@ -85,28 +90,28 @@ class RecrutementController extends AbstractController
             if ($fichier) {
                 $originalFilename = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = $originalFilename.'-'.uniqid().'.'.$fichier->guessExtension();
+
                 // Move the file to the directory where brochures are stored
                 $fichier->move(
                     $this->getParameter('cv_directory'),
                     $newFilename
                 );
+
+                $message = (new \Swift_Message('Proposition de candidature depuis la page recrutement.'))
+                    ->setFrom('itwebsonsender@gmail.com')
+                    ->setTo('contact@itwebson.net')
+                    ->setBody(
+                        $this->renderView( 'emails/recrutement.html.twig', [
+                            'data' => $data,
+                            'newFilename' => $newFilename
+                        ]),
+                        'text/html'
+                    )
+                ;
+                $mailer->send($message);
             }
 
-            // Envoie de mail install switmailer  \Swift_Message $mailer en argment de la fction index
-            // $message = (new \Swift_Message('Email envoye depuis le site web ITwebson'))
-            //     ->setFrom('send@mail.com')
-            //     ->setFrom('recpient@mail.com')
-            //     ->setBody(
-            //         $this->renderView(
-            //             'emails/contact.html.twig',
-            //             ['data' => $data]
-            //         ),
-            //         'text/html'
-            //     )
-            // ;
-            // $mailer->send($message);
-
-            $this->addFlash('success','Merci, votre cv a bien ete envoye.');
+            $this->addFlash('success','Merci, votre cv a bien été envoyé.');
             return $this->redirectToRoute('recrutement', [
                 'form' => $form->createView(),
             ]);
