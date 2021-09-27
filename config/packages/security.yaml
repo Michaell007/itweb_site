@@ -1,7 +1,11 @@
 security:
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -22,7 +26,7 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
-                default_target_path: admin_home
+                default_target_path: dashboard_itw
 
             logout:
                 path: account_logout
