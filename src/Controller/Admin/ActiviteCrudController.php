@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activite;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
@@ -31,10 +32,10 @@ class ActiviteCrudController extends AbstractCrudController
         // onlyOnForms() masque le champ dans toute les pages sauf edit et new
 
         yield IdField::new('id', 'Identifiant')->onlyOnIndex();
-        yield FormField::addPanel('DETAILS');
+        // yield FormField::addPanel('DETAILS');
         yield TextField::new('titre')
             ->setTemplatePath('bundles\EasyAdminBundle\personnels\field_custom_titre.html.twig')
-            ->setColumns('col-sm-12 col-md-6 col-md-6');
+            ->setColumns('col-sm-12 col-md-4 col-md-4');
         if (in_array($pageName, [Crud::PAGE_NEW, Crud::PAGE_EDIT])) {
             yield ImageField::new('image')
                 ->setUploadDir('/public/images/')
@@ -43,20 +44,14 @@ class ActiviteCrudController extends AbstractCrudController
         } else {
             yield ImageField::new('image')->setBasePath('/images/')->setColumns('col-sm-12 col-md-4 col-md-4');
         }
-        yield TextEditorField::new('texteIntroduction')->setColumns('col-sm-12 col-md-6 col-md-6');
         yield AssociationField::new('user','Utilisateur(s)')->setColumns('col-sm-12 col-md-4 col-md-4');
+        yield TextEditorField::new('texteIntroduction')->setColumns(12);
         // yield FormField::addRow();
-
-        yield FormField::addPanel('CONTENU COMPLET');
-        yield TextEditorField::new('texteComplet')->setColumns(12);
-        // yield DateField::new('updatedAt', 'Fait le')->setFormat('Y-MM-dd HH:mm')->renderAsNativeWidget()->onlyOnIndex();
-        
-        // $updatedAt = DateTimeField::new('updatedAt')->setFormTypeOptions([
-        //     'html5' => true,
-        //     'years' => range(date('Y'),date('Y') + 5),
-        //     'widget' => 'single_text',
-        // ]);
-        
+        yield TextEditorField::new('texteComplet')
+            ->addCssClass('field-ck-editor')
+            ->setFormType(CKEditorType::class)
+            ->setColumns(12);
+        yield DateField::new('updatedAt', 'Fait le')->setFormat('dd-MM-Y')->renderAsNativeWidget()->onlyOnIndex();
         
     }
 
@@ -67,6 +62,7 @@ class ActiviteCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Mes Activités')
             ->setSearchFields(['titre','user'])
             ->setDefaultSort(['updatedAt' => 'DESC'])
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
             // ->overrideTemplate('çrud/new', 'bundles\EasyAdminBundle\personnels\crud_new_custom.html.twig')
             // ->overrideTemplate('çrud/edit', 'bundles\EasyAdminBundle\personnels\crud_edit_custom.html.twig')
             // ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
