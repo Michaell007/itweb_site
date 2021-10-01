@@ -36,7 +36,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p class="text-center top-message">Pour vos solutions de communication et de marketing, Un guichet unique, <a href="{{ path('home') }}">ITwebson !</a></p>
+                        <p class="text-center top-message">{{ infos.slogan|raw }}</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                             <!-- brand logo -->
                             <div class="header__logo">
                                 <a href="{{path("home")}}">
-                                    <img src="{{ asset("assets/images/logo/itwebson.png") }}" class="img-fluid" alt="logo itwebson">
+                                    <img src="{{ asset('images/' ~ infos.logo) }}" class="img-fluid" alt="{{ infos.logoAlt }}">
                                 </a>
                             </div>
 
@@ -88,7 +88,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             <!-- header right box -->
@@ -126,8 +125,8 @@
                                     <img src="{{ asset("assets/images/logo/itwebson.png") }}" class="img-fluid" alt="">
                                 </div>
                                 <ul class="footer-widget__list">
-                                    <li>Rivera 3 Abidjan - Cote d'Ivoire</li>
-                                    <li><a href="mailto:contact@itwesbon.net" class="hover-style-link">contact@itwesbon.net</a></li>
+                                    <li>{{ infos.lieu }}</li>
+                                    <li><a href="mailto:{{ infos.email }}" class="hover-style-link">{{ infos.email }}</a></li>
                                     {# <li><a href="tel:123344556" class="hover-style-link text-black font-weight--bold">(+..)--- ----</a></li> #}
                                     {# <li><a href="https://hasthemes.com/" class="hover-style-link text-color-primary">www.mitech.xperts.com</a></li> #}
                                 </ul>
@@ -223,7 +222,7 @@
                             <!-- logo -->
                             <div class="logo">
                                 <a href="{{ path('home') }}">
-                                    <img src="{{ asset("assets/images/logo/itwebson.png") }}" class="img-fluid" alt="">
+                                    <img src="{{ asset('images/' ~ infos.logo) }}" class="img-fluid" alt="{{ infos.logoAlt }}">
                                 </a>
                             </div>
                         </div>

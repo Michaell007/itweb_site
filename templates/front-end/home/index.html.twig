@@ -1,59 +1,29 @@
 {% extends 'front.html.twig' %}
 
-{% block body %} 
+{% block body %}
     <div class="site-wrapper-reveal">
         <!--============ Resolutions Hero Start ============-->
         <div class="resolutions-hero-slider position-relative">
             <div class="swiper-container hero-slider__container">
                 <div class="swiper-wrapper testimonial-slider__wrapper">
-                    <div class="swiper-slide">
-                        <div class="service-hero-wrapper resolutions-hero-space resolutions-hero-bg" data-swiper-autoplay="5000">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 ml-auto mr-auto">
-                                        <div class="service-hero-wrap wow move-up">
-                                            <div class="service-hero-text text-center">
-                                               {#  <h3 class="text-white">Votre guichet unique</h3> #}
-                                                <h1 class="font-weight--reguler text-white mb-30">Efficacité </h1>
+                    {% for item in slides %}
+                        <div class="swiper-slide">
+                            <div class="service-hero-wrapper resolutions-hero-space resolutions-hero-bg{% if loop.index > 1 %}-{{ loop.index }}{% endif %}" data-swiper-autoplay="5000">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+                                            <div class="service-hero-wrap wow move-up">
+                                                <div class="service-hero-text text-center">
+                                                    {# <h3 class="text-white">Votre guichet unique</h3> #}
+                                                    <h1 class="font-weight--reguler text-white mb-30">{{ item.titre }} </h1>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-hero-wrapper resolutions-hero-space resolutions-hero-bg-2" data-swiper-autoplay="5000">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 ml-auto mr-auto">
-                                        <div class="service-hero-wrap wow move-up">
-                                            <div class="service-hero-text text-center">
-                                                {# <h3 class="text-white">Construire l'image de marque de</h3> #}
-                                                <h1 class="font-weight--reguler text-white mb-30">Dynamisme </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-hero-wrapper resolutions-hero-space resolutions-hero-bg-3" data-swiper-autoplay="5000">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 ml-auto mr-auto">
-                                        <div class="service-hero-wrap wow move-up">
-                                            <div class="service-hero-text text-center">
-                                                {# <h3 class="text-white">Booster le chiffre d'affaires de</h3> #}
-                                                <h1 class="font-weight--reguler text-white mb-30">Innovation</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="vc_row-separator center_curve_alt bottom">
@@ -66,38 +36,10 @@
         <!--===========  feature-images-wrapper  Start =============-->
         <div class="feature-images-wrapper bg-gray">
             <div class="container">
-
                 <div class="row">
                     <div class="col-12">
                         <div class="feature-images__five resolutions-hero-bottom">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-05 style-05a">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <div class="default-image">
-                                                    <img class="img-fluid" src="{{ asset("assets/images/icons/mitech-home-resolutions-box-image-01-100x98.png") }}" alt="">
-                                                </div>
-                                                <div class="hover-images">
-                                                    <img class="img-fluid" src="{{ asset("assets/images/icons/mitech-home-resolutions-box-image-01-hover-100x98.png") }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Web & App Développement </h5>
-                                                <div class="text">Un site Internet est de nos jours une vitrine incontournable ...
-                                                </div>
-                                                <div class="box-images-arrow">
-                                                    <a href="{{ path('it_solutions') }}">
-                                                        <span class="button-text">Savoir plus</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
                                 <div class="col-lg-4 col-md-6 wow move-up">
                                     <!-- ht-box-icon Start -->
                                     <div class="ht-box-images style-05 style-05b">
@@ -111,9 +53,8 @@
                                                 </div>
                                             </div>
                                             <div class="content">
-                                                <h5 class="heading">Infographie</h5>
-                                                <div class="text">Le web marketing permet de dynamiser un réseau, de développer une image <br/>de marque ...
-                                                </div>
+                                                <h5 class="heading">{{  activities[1].titre }}</h5>
+                                                <div class="text">{{  activities[1].texteIntroduction|length > 50 ? activities[1].texteIntroduction|striptags|slice(0, 100) ~ '...' : activities[1].texteIntroduction|raw }}</div>
                                                 <div class="box-images-arrow">
                                                     <a href="{{ path('it_solutions') }}">
                                                         <span class="button-text">Savoir plus</span>
@@ -124,6 +65,31 @@
                                         </div>
                                     </div>
                                     <!-- ht-box-icon End -->
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow move-up">
+                                    <!-- ht-box-icon Start -->
+                                    <div class="ht-box-images style-05 style-05a">
+                                        <div class="image-box-wrap">
+                                            <div class="box-image">
+                                                <div class="default-image">
+                                                    <img class="img-fluid" src="{{ asset("assets/images/icons/mitech-home-resolutions-box-image-01-100x98.png") }}" alt="">
+                                                </div>
+                                                <div class="hover-images">
+                                                    <img class="img-fluid" src="{{ asset("assets/images/icons/mitech-home-resolutions-box-image-01-hover-100x98.png") }}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="heading">{{  activities[0].titre }} </h5>
+                                                <div class="text">{{  activities[0].texteIntroduction|length > 50 ? activities[0].texteIntroduction|striptags|slice(0, 150) ~ '...' : activities[0].texteIntroduction|raw }}</div>
+                                                <div class="box-images-arrow">
+                                                    <a href="{{ path('it_solutions') }}">
+                                                        <span class="button-text">Savoir plus</span>
+                                                        <i class="far fa-long-arrow-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 wow move-up">
                                     <!-- ht-box-icon Start -->
@@ -138,9 +104,8 @@
                                                 </div>
                                             </div>
                                             <div class="content">
-                                                <h5 class="heading">Marketing Digital</h5>
-                                                <div class="text">La visibilité sur les medias sociaux est aujourd’hui un ingrédient<br/> incontournable ...
-                                                </div>
+                                                <h5 class="heading">{{  activities[2].titre }}</h5>
+                                                <div class="text">{{  activities[2].texteIntroduction|length > 50 ? activities[2].texteIntroduction|striptags|slice(0, 100) ~ '...' : activities[2].texteIntroduction|raw }}</div>
                                                 <div class="box-images-arrow">
                                                     <a href="{{ path('it_solutions') }}">
                                                         <span class="button-text">Savoir plus</span>
@@ -150,7 +115,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ht-box-icon End -->
                                 </div>
                             </div>
                         </div>
@@ -160,217 +124,14 @@
             </div>
         </div>
 
-        <!--===========  feature-icon-wrapper  Start =============-->
-        {# <div class="feature-icon-wrapper section-space--ptb_100">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title-wrap text-center section-space--mb_40">
-                            <h6 class="section-sub-title mb-20">Industries we Serve</h6>
-                            <h3 class="heading">For your very specific industry, <br> we have <span class="text-color-primary"> highly-tailored IT solutions.</span></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="feature-list__one">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-1" data-svg-icon="{{ asset("assets/images/svg/linea-basic-heart.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">IT Design </h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-2" data-svg-icon="{{ asset("assets/images/svg/linea-basic-case.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">IT Management</h5>
-                                                <div class="text">It’s possible to simultaneously manage and transform information from one server to another.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-3" data-svg-icon="{{ asset("assets/images/svg/linea-basic-alarm.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Data Security</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-4" data-svg-icon="{{ asset("assets/images/svg/linea-basic-geolocalize-05.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Business Reform</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-5" data-svg-icon="{{ asset("assets/images/svg/linea-ecommerce-money.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Infrastructure Plan</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-6" data-svg-icon="{{ asset("assets/images/svg/linea-basic-spread-text-bookmark.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Firewall Advance</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-7" data-svg-icon="{{ asset("assets/images/svg/linea-music-headphones.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Desktop Computing</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-icon style-01 single-svg-icon-box">
-                                        <div class="icon-box-wrap">
-                                            <div class="icon">
-                                                <div class="svg-icon" id="svg-icon-8" data-svg-icon="{{ asset("assets/images/svg/linea-basic-gear.svg") }}"></div>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Software Engineering</h5>
-                                                <div class="text">We provide the most responsive and functional IT design for companies and businesses worldwide.
-                                                </div>
-                                                <div class="feature-btn">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="far fa-long-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> #}
-
         <!--====================  Conact us Section Start ====================-->
         <div class="contact-us-section-wrappaer processing-contact-us-bg section-space--ptb_120">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-lg-6">
                         <div class="conact-us-wrap-one">
-                            <h3 class="heading text-white">Nous restons à votre disposition pour toute information supplémentaire. Veuillez nous 
-                            contacter au:</h3>
-
-                            <div class="sub-heading text-white">Nos équipes sont disponibles 24h/7 pour toutes assistances..</div>
-
+                            <h3 class="heading text-white">{{  section[0].titre }}</h3>
+                            <div class="sub-heading text-white">{{  section[0].content|raw }}</div>
                         </div>
                     </div>
 
@@ -386,13 +147,41 @@
             </div>
         </div>
 
+        <!--=========== About Company Area Start ==========-->
+        <div class="software-innovation-about-company-area software-innovation-about-bg section-space--ptb_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="image-inner-video-section">
+                            <img class="img-fluid border-radus-5" src="{{ asset('images/' ~ section[1].image) }}" alt="{{ section[1].alt }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ms-auto mt-30">
+                        <div class="machine-learning-about-content">
+                            <div class="section-title mb-20">
+                                <!-- section-title-wrap Start -->
+                                <div class="section-title-wrap text-left section-space--mb_30">
+                                    <h6 class="section-sub-title mb-20">{{  section[1].subtitre }}</h6>
+                                    <h3 class="heading">
+                                        {{ section[1].titre |raw }}
+                                    </h3>
+                                </div>
+                                <p class="dec-text mt-20">{{ section[1].content |raw }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--========== Call to Action Area Start ============-->
-         <div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one">
+        <div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-8 col-lg-7">
                         <div class="cta-content md-text-center">
-                            <h3 class="heading text-white">Nous gérons toutes sortes de services informatiques qui promettent votre <span class="text-color-secondary"> succès</span></h3>
+                            <h3 class="heading text-white">{{ section[2].titre |raw }}
+                            </h3>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5">

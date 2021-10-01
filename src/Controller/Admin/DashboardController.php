@@ -3,6 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activite;
+use App\Entity\Compagnie;
+use App\Entity\Entreprise;
+use App\Entity\PageAccueil;
+use App\Entity\SectionOne;
+use App\Entity\SectionTwo;
+use App\Entity\Slide;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,12 +41,20 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToUrl('Visit public website', 'fa fa-globe', '/')
             ->setLinkTarget('_blank');
         yield    MenuItem::section();
-        
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::section('Activités');
-        yield MenuItem::linkToCrud('Nos Activités', 'fa fa-cubes', Activite::class);
-        yield MenuItem::linkToCrud('Ajouter une Activité', 'fa fa-add', Activite::class)->setAction('new');
+        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section('ENTREPRISE');
+        yield MenuItem::linkToCrud('Informations', 'fa fa-pencil-square-o', Compagnie::class);
+
+        yield MenuItem::section('SITE WEB');
+        yield MenuItem::subMenu('PAGE ACCUEIL', 'fa fa-home')->setSubItems([
+            MenuItem::linkToCrud('Mes Slides', 'fa fa-pencil-square-o', Slide::class),
+            MenuItem::linkToCrud('Ajouter une Slide', 'fa fa-pener', Slide::class)->setAction('new'),
+            MenuItem::linkToCrud('Nos Activités', 'fa fa-cubes', Activite::class),
+            MenuItem::linkToCrud('Ajouter une Activité', 'fa fa-add', Activite::class)->setAction('new'),
+            MenuItem::linkToCrud('Section', 'fa fa-pencil-square', SectionOne::class),
+            MenuItem::linkToCrud('Ajouter une Section', 'fa fa-pener', SectionOne::class)->setAction('new'),
+        ]);
 
         yield MenuItem::section('Utilisateurs');
         yield MenuItem::linkToCrud('Liste Administrateur', 'fa fa-user-circle-o', User::class);
