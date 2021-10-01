@@ -3,12 +3,12 @@
 {% block body %} 
     <div class="site-wrapper-reveal">
         <div class="bg-white">
-            <div class="about-banner-wrap banner-space bg-img" data-bg="{{ asset('assets/images/bg/business-solution-hero-bg.jpg') }}">
+            <div class="about-banner-wrap banner-space bg-img" data-bg="{{ asset('images/' ~ pageAbout.image) }}" alt="{{ pageAbout.imageAlt }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 ml-auto mr-auto">
                             <div class="about-banner-content text-center">
-                                <h1 class="mb-15 text-white">Qui sommes nous?</h1>
+                                <h1 class="mb-15 text-white">{{ pageAbout.titre }}</h1>
                                 <!-- h5 class="font-weight--normal text-white">Reach out to the world’s most reliable IT services.</!-->
                             </div>
                         </div>
@@ -16,29 +16,23 @@
                 </div>
             </div>
             
-            <!--===========  feature-large-images-wrapper  Start =============-->
             <div class="feature-large-images-wrapper section-space--ptb_100">
                 <div class="container">
                     <div class="cybersecurity-about-box">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="conact-us-wrap-one managed-it">
-                                    <h5 class="heading ">Développer toutes sortes de <span class="text-color-primary"> solutions capables d’améliorer les performances</span> des entreprises ivoiriennes en vue de les rendre compétitives</h5>
+                                    <h5 class="heading ">{{ pageAbout.featureTitre |raw }}</h5>
                                 </div>
                             </div>
                             <div class="col-lg-7 offset-lg-1">
                                 <div class="cybersecurity-about-text">
                                     <div class="text"> 
-                                        <h5 class="text-color-primary">ITwebson</h5> 
-                                        Crée depuis octobre 2013, ITwebson est une entreprise digitale qui offre le meilleur des solutions IT au service de la communication, du marketing et de la gouvernance.
+                                        <h5 class="text-color-primary">{{ pageAbout.featurePresentationTitre }}</h5>
                                     </div>
-                                    <div class="text">
-                                        Pour l'élaboration d’une stratégie de mise en place d’un systèmes d’information et de gouvernance supportant les activités de communication, commerciale et marketing, 
-                                        Notre équipe de consultants, d'analystes web et de marketeurs expérimentés sera en mesure de vous accompagner et de vous conseiller efficacement dans votre projet de positionnement et de vente, 
-                                        en établissant dès le départ une stratégie orientée vers vos objectifs business et conçue sur mesure en fonction de votre vision.
-                                    </div>
+                                    <div class="text">{{ pageAbout.featurePresentationContent |raw }}</div>
                                     <div class="button-group-wrap">
-                                        <a href="#vision" class="ht-btn ht-btn-md ht-btn--solid mr-md-3 mb-20">Notre Vision</a>
+                                        <a href="#vision" class="ht-btn ht-btn-md ht-btn--solid mr-md-3 mb-20">{{ pageAbout.featureVisionTitre }}</a>
                                         <!-- a href="#" class="ht-btn ht-btn-md ht-btn--solid">Notre Approche</!-->
                                     </div>
                                 </div>
@@ -48,13 +42,12 @@
                 </div>
             </div>
 
-            <!--========= About Delivering Wrapper Start ===========-->
             <div class="about-delivering-wrapper bg-gray section-space--ptb_100" id="vision">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title-wrap text-center section-space--mb_20">
-                                <h3 class="heading">Notre Vision</h3>
+                                <h3 class="heading">{{ pageAbout.featureVisionTitre }}</h3>
                             </div>
                         </div>
                     </div>
@@ -64,15 +57,15 @@
                                 <div class="list-item">
                                     <div class="marker"></div>
                                     <div class="title-wrap">
-                                        <h5 class="title"> Concevoir </h5>
-                                        <div class="desc"> des sites et application web personnalisés (valeurs, besoins et moyens).</div>
+                                        <h5 class="title">{{ visions[0].titre }} </h5>
+                                        <div class="desc"> {{ visions[0].details |raw }}</div>
                                     </div>
                                 </div>
                                 <div class="list-item">
                                     <div class="marker"></div>
                                     <div class="title-wrap">
-                                        <h5 class="title"> Développer </h5>
-                                        <div class="desc">toutes sortes de solutions capables d’améliorer les performances des entreprises ivoiriennes en vue de les rendre compétitives. </div>
+                                        <h5 class="title"> {{ visions[1].titre }} </h5>
+                                        <div class="desc">{{ visions[1].details |raw }} </div>
                                     </div>
                                 </div>
                             </div>
@@ -82,17 +75,15 @@
                                 <div class="list-item">
                                     <div class="marker"></div>
                                     <div class="title-wrap">
-                                        <h5 class="title"> Augmenter </h5>
-                                        <div class="desc"> la visibilité du support web des promoteurs et le trafic de leurs sites.</div>
+                                        <h5 class="title"> {{ visions[2].titre }} </h5>
+                                        <div class="desc"> {{ visions[2].details |raw }}</div>
                                     </div>
                                 </div>
                                 <div class="list-item">
                                     <div class="marker"></div>
                                     <div class="title-wrap">
-                                        <h5 class="title">Assister</h5>
-                                        <div class="desc">
-                                            Techniquement en vue de les aider à obtenir plus de ventes et à améliorer l’image de leur business ou compagnie  
-                                        </div>
+                                        <h5 class="title">{{ visions[3].titre }}</h5>
+                                        <div class="desc">{{ visions[3].details |raw }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +91,6 @@
                     </div>
                 </div>
             </div>
-            <!--========= About Resources Wrapper End ===========-->
 
             <!--====================  testimonial section ====================
             <div class="testimonial-slider-area section-space--pt_100">
@@ -231,7 +221,6 @@
                 </div>
             </div -->
 
-            <!--====================  brand logo slider area ====================-->
             <div class="brand-logo-slider-area section-space--ptb_60">
                 <div class="container">
                     <div class="row">

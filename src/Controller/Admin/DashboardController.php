@@ -5,11 +5,13 @@ namespace App\Controller\Admin;
 use App\Entity\Activite;
 use App\Entity\Compagnie;
 use App\Entity\Entreprise;
+use App\Entity\PageAbout;
 use App\Entity\PageAccueil;
 use App\Entity\SectionOne;
 use App\Entity\SectionTwo;
 use App\Entity\Slide;
 use App\Entity\User;
+use App\Entity\Vision;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -40,7 +42,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToUrl('Visit public website', 'fa fa-globe', '/')
             ->setLinkTarget('_blank');
-        yield    MenuItem::section();
+        yield MenuItem::section();
 
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('ENTREPRISE');
@@ -54,6 +56,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Ajouter une Activité', 'fa fa-add', Activite::class)->setAction('new'),
             MenuItem::linkToCrud('Section', 'fa fa-pencil-square', SectionOne::class),
             MenuItem::linkToCrud('Ajouter une Section', 'fa fa-pener', SectionOne::class)->setAction('new'),
+        ]);
+
+        yield MenuItem::subMenu('PAGE ABOUT', 'fa fa-home')->setSubItems([
+            MenuItem::linkToCrud('Presentation', 'fa fa-pencil-square-o', PageAbout::class),
+            MenuItem::linkToCrud('Mes visions', 'fa fa-pencil-square-o', Vision::class),
         ]);
 
         yield MenuItem::section('Utilisateurs');
