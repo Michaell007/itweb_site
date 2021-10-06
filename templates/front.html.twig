@@ -70,15 +70,21 @@
                                                         <li>
                                                             <a href="{{ path('about_us') }}"><span>Qui sommes nous ?</span></a>
                                                         </li>
-                                                        <li>
-                                                            <a href="{{ path('it_solutions') }}"><span>IT Solutions</span></a>
+
+                                                        <li class="has-children has-children--multilevel-submenu">
+                                                            <a href="#"><span>IT solutions</span></a>
+                                                            <ul class="submenu">
+                                                                <li><a href="{{ path('conseil_strategique') }}"><span>Conseil stratégique</span></a></li>
+                                                                <li><a href="{{ path('creation_plateforme_digitale') }}"><span>Création de plateforme digitale</span></a></li>
+                                                                <li><a href="{{ path('production_contenu_media') }}"><span>Production de contenu Trans-média</span></a></li>
+                                                            </ul>
                                                         </li>
-                                                        {# <li>
-                                                            <a href="{{ path('marketing') }}"><span>Marketing</span></a>
-                                                        </li> #}
                                                         <li>
                                                             <a href="{{ path('recrutement') }}"><span>Recrutement</span></a>
                                                         </li>
+                                                        {# <li>
+                                                            <a href="{{ path('recrutement') }}"><span>Blog</span></a>
+                                                        </li> #}
                                                         <li>
                                                             <a href="{{ asset('contact') }}"><span>Contact</span></a>
                                                         </li>
@@ -145,17 +151,15 @@
                                 <ul class="footer-widget__list">
                                     <li><a href="{{ path('home') }}" class="hover-style-link">Home</a></li>
                                     <li><a href="{{ path('about_us') }}" class="hover-style-link">Qui sommes nous?</a></li>
-                                    <li><a href="{{ path('it_solutions') }}" class="hover-style-link">IT Solutions</a></li>
-                                    <li><a href="{{ path('marketing') }}" class="hover-style-link">Marketing</a></li>
                                     <li><a href="{{ path('contact') }}" class="hover-style-link">Contact</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
                                 <h6 class="footer-widget__title mb-20">Services</h6>
                                 <ul class="footer-widget__list">
-                                    <li><a href="{{ path('it_solutions') }}" class="hover-style-link">Web & App Développement</a></li>
-                                    <li><a href="{{ path('it_solutions') }}" class="hover-style-link">Infographie</a></li>
-                                    <li><a href="{{ path('it_solutions') }}" class="hover-style-link">Marketing Digital</a></li>
+                                    <li><a href="{{ path('conseil_strategique') }}" class="hover-style-link">Conseil stratégique</a></li>
+                                    <li><a href="{{ path('creation_plateforme_digitale') }}" class="hover-style-link">Création de plateforme digitale</a></li>
+                                    <li><a href="{{ path('production_contenu_media') }}" class="hover-style-link">Production de contenu Trans-média</a></li>
                                 </ul>
                             </div>
                             {# <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
@@ -243,9 +247,6 @@
                         </li>
                         <li>
                             <a href="{{ path('about_us') }}"><span>Qui sommes nous ?</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ path('it_solutions') }}"><span>IT Solutions</span></a>
                         </li>
                         <li>
                             <a href="{{ path('marketing') }}"><span>Marketing</span></a>

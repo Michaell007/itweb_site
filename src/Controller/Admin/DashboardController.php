@@ -7,8 +7,10 @@ use App\Entity\Compagnie;
 use App\Entity\Entreprise;
 use App\Entity\PageAbout;
 use App\Entity\PageAccueil;
+use App\Entity\Recrutement;
 use App\Entity\SectionOne;
 use App\Entity\SectionTwo;
+use App\Entity\Service;
 use App\Entity\Slide;
 use App\Entity\User;
 use App\Entity\Vision;
@@ -61,6 +63,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('PAGE ABOUT', 'fa fa-home')->setSubItems([
             MenuItem::linkToCrud('Presentation', 'fa fa-pencil-square-o', PageAbout::class),
             MenuItem::linkToCrud('Mes visions', 'fa fa-pencil-square-o', Vision::class),
+        ]);
+
+        yield MenuItem::subMenu('PAGE SERVICE', 'fa fa-home')->setSubItems([
+            MenuItem::linkToCrud('Service', 'fa fa-pencil-square-o', Service::class),
+        ]);
+
+        yield MenuItem::subMenu('PAGE RECRUTEMENT', 'fa fa-home')->setSubItems([
+            MenuItem::linkToCrud('Recrutement', 'fa fa-pencil-square-o', Recrutement::class),
         ]);
 
         yield MenuItem::section('Utilisateurs');

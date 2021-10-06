@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\CompagnieRepository;
 use Symfony\Component\Asset\UrlPackage;
+use App\Repository\RecrutementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,8 +24,10 @@ class RecrutementController extends AbstractController
     /**
      * @Route("/recrutement", name="recrutement")
      */
-    public function index(Request $request, \Swift_Mailer $mailer): Response
+    public function index(Request $request, \Swift_Mailer $mailer, CompagnieRepository $compagnieRepo, RecrutementRepository $recrueRepo): Response
     {
+        $infos = $compagnieRepo->findOneBy(['id' => 1]);
+        $recrues = $recrueRepo->findAll();
 
         $urlPackage = new UrlPackage('http://localhost:8000/assets/uploads/cv/images/', new StaticVersionStrategy('v1'));
         // dd( $urlPackage->getUrl('/logo.png') );
@@ -118,6 +122,8 @@ class RecrutementController extends AbstractController
         }
 
         return $this->render('front-end/recrutement/recrutement.html.twig', [
+            'infos' => $infos,
+            'recrues' => $recrues,
             'form' => $form->createView(),
         ]);
     }

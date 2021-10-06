@@ -2,24 +2,27 @@
 
 namespace App\Controller;
 
+use App\Repository\CompagnieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request, \Swift_Mailer $mailer): Response
+    public function index(Request $request, \Swift_Mailer $mailer, CompagnieRepository $compagnieRepo): Response
     {
+        $infos = $compagnieRepo->findOneBy(['id' => 1]);
+
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
                 'required' => true,
@@ -77,6 +80,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('front-end/contact/contact.html.twig', [
+            'infos' => $infos,
             'form' => $form->createView(),
         ]);
     }

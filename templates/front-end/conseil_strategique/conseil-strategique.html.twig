@@ -1,0 +1,23 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Conseil strategique |ITWebson{% endblock %}
+
+{% block body %}
+
+    <div class="site-wrapper-reveal">
+        <div class="our-history-wrapper section-space--ptb_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- section-title-wrap Start -->
+                        <div class="section-title-wrap section-space--mb_30">
+                            <h3 class="heading mb-20">Conseil <span class="text-color-primary"> stratégique.</span></h3>
+                                {{ services[1].content |raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
