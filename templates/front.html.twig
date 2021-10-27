@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ITwebson - la web agence ivoirienne</title>
-    <meta name="description" content="">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset("assets/images/favicon.ico") }}">
@@ -50,7 +50,7 @@
                         <div class="header default-menu-style position-relative">
                             <!-- brand logo -->
                             <div class="header__logo">
-                                <a href="{{path("home")}}">
+                                <a href="{{ path("home") }}">
                                     <img src="{{ asset('images/' ~ infos.logo) }}" class="img-fluid" alt="{{ infos.logoAlt }}">
                                 </a>
                             </div>
